@@ -16,7 +16,7 @@ class ContactPage(MDScreen):
         msg = EmailMessage()
         msg['Subject'] = "New Contact Form Enquiry"
         msg['To'] = email
-        msg['From'] = formataddr(name.text, sender_email.text)
+        msg['From'] = formataddr((name.text, sender_email.text))
         msg.set_content(f"Hi, my name is {name}.\n{message}")
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(email, password)
